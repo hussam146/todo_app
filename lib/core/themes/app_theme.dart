@@ -11,7 +11,11 @@ ThemeData getTheme(context){
   return ThemeData(
 
 
-    
+    useMaterial3: true,
+
+    primaryColor: AppColors.hcl,
+
+    splashColor: Colors.transparent,
 
     inputDecorationTheme: InputDecorationTheme(
       

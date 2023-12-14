@@ -119,7 +119,7 @@ class TaskComponent extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      // complete task buttom
+                      // complete task button
                       taskModel.isCompleted == 1
                           ? Container()
                           : Container(
@@ -277,11 +277,11 @@ class NoTasksComponent extends StatelessWidget {
       children: [
         // Svg pic
         Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 73.0),
+          padding: EdgeInsets.symmetric(horizontal: 73.h),
           child: SvgPicture.asset(
             AppAssets.noTasks,
-            width: 227,
-            height: 227,
+            width: 227.w,
+            height: 227.h,
           ),
         ),
         SizedBox(

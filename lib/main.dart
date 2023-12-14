@@ -11,7 +11,7 @@ import 'core/services/service_locator.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
-  setUp();
+  setUp();// locate get_it instances
   await sl<CacheHelper>().init();
   sl<SqfliteHelper>().initDatabase();
   await sl<NotifyHelper>().initializeNotification(sl<NotifyHelper>().fln);

@@ -106,7 +106,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
       BlocProvider.of<OnBoardingCubit>(context).onBoardingList[index].title,
       style: GoogleFonts.lato(
           color: AppColors.white87,
-          fontSize: FontSize.s30,
+          fontSize: FontSize.s24,
           fontWeight: FontWeight.w700),
     );
   }
@@ -118,7 +118,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
             .onBoardingList[index]
             .subTitle,
         style: GoogleFonts.lato(
-            color: AppColors.white87,
+            color: AppColors.gray,
             fontSize: FontSize.s16,
             fontWeight: FontWeight.w400),
       ),

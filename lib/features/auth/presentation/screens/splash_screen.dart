@@ -22,7 +22,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   void navigate() {
-    Future.delayed(const Duration(seconds: 2)).then((value) {
+    Future.delayed(const Duration(milliseconds: 1500)).then((value) {
       dynamic onBoardingToken =
           sl<CacheHelper>().getData(key: Constants.onBoardingKey);
       if (onBoardingToken != null) {

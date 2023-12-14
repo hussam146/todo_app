@@ -5,9 +5,8 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:todo_app/features/task/data/model/task_model.dart';
 
-
-
 const tableName = 'tasks';
+
 class SqfliteHelper {
   // singleton instance
   SqfliteHelper._internal();
@@ -20,10 +19,9 @@ class SqfliteHelper {
   Future<Database> get database async {
     if (_database != null) {
       return _database;
-    } else {
-      _database = await initDatabase();
-      return _database;
     }
+    _database = await initDatabase();
+    return _database;
   }
 
   initDatabase() async {
@@ -47,10 +45,10 @@ class SqfliteHelper {
           ''').then((value) => log("db created successfully"));
       },
       onOpen: (db) => log("db opened successfully"),
-      onUpgrade: (db, oldVersion, newVersion){
+      onUpgrade: (db, oldVersion, newVersion) {
         // ALTER
         // assign a new version for your table
-      }, 
+      },
     ).then((value) => _database = value);
   }
 
@@ -88,7 +86,7 @@ class SqfliteHelper {
       SET isCompleted = ?
       WHERE id = ?
       ''', [1, id]);
-      // default value for isCompleted variable is 0.
+    // default value for isCompleted variable is 0.
   }
 
   Future<int> deleteData(int id) async {
@@ -98,16 +96,17 @@ class SqfliteHelper {
       WHERE id = ?
       ''', [id]);
   }
-  // ->  
+
+  // ->
   // upload data to server if there is an internet connection.
-  uploadProduct(){
+  uploadProduct() {
     // body
     // headers
-    // encode response 
+    // encode response
     // decode response
   }
   // gather data when there no internet connection then auto fetch them when connected to the internet.
-  syncProduct(){
+  syncProduct() {
     // create another table contains data from first table.
     // get them from your db then delete them.
   }

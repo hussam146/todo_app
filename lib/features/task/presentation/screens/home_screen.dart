@@ -66,18 +66,20 @@ class HomeScreen extends StatelessWidget {
                         initialSelectedDate: DateTime.timestamp(),
                         selectionColor: AppColors.hcl,
                         deactivatedColor: AppColors.black,
+                        height: 90.h,
+                        width: 60.w,
                         selectedTextColor: AppColors.white,
                         dayTextStyle: GoogleFonts.lato(
                             color: AppColors.white87,
-                            fontSize: FontSize.s16,
+                            fontSize: FontSize.s14,
                             fontWeight: FontWeight.w400),
                         dateTextStyle: GoogleFonts.lato(
                             color: AppColors.white87,
-                            fontSize: FontSize.s16,
+                            fontSize: FontSize.s14,
                             fontWeight: FontWeight.w400),
                         monthTextStyle: GoogleFonts.lato(
                             color: AppColors.white87,
-                            fontSize: FontSize.s16,
+                            fontSize: FontSize.s14,
                             fontWeight: FontWeight.w400),
                         onDateChange: (date) {
                           bloc.getSelectedDate(date);
