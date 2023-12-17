@@ -19,12 +19,10 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: AppColors.black,
         body: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
           child: Padding(
-            padding:
-                const EdgeInsets.only(top: 34.0, left: 14.0, right: 14.0),
+            padding: const EdgeInsets.only(top: 34.0, left: 14.0, right: 14.0),
             child: BlocConsumer<TaskCubit, TaskStates>(
               listener: (context, state) {
                 if (state is UpdateTasksSuccessState) {
@@ -38,12 +36,19 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // time text
-                    Text(
-                      DateFormat.yMMMMd().format(DateTime.now()),
-                      style: GoogleFonts.lato(
-                          color: AppColors.white87,
-                          fontWeight: FontWeight.w700,
-                          fontSize: FontSize.s24),
+                    Row(
+                      children: [
+                        Text(
+                          DateFormat.yMMMMd().format(DateTime.now()),
+                          style: GoogleFonts.lato(
+                              fontWeight: FontWeight.w700,
+                              fontSize: FontSize.s24),
+                        ),
+                        const Spacer(),
+                        IconButton(
+                            onPressed: () {bloc.changeTheme();},
+                            icon: const Icon(Icons.brightness_2_outlined))
+                      ],
                     ),
                     SizedBox(
                       height: 12.h,
@@ -52,9 +57,7 @@ class HomeScreen extends StatelessWidget {
                     Text(
                       AppStrings.today,
                       style: GoogleFonts.lato(
-                          color: AppColors.white87,
-                          fontWeight: FontWeight.w700,
-                          fontSize: FontSize.s24),
+                          fontWeight: FontWeight.w700, fontSize: FontSize.s24),
                     ),
                     SizedBox(
                       height: 6.h,
@@ -70,15 +73,12 @@ class HomeScreen extends StatelessWidget {
                         width: 60.w,
                         selectedTextColor: AppColors.white,
                         dayTextStyle: GoogleFonts.lato(
-                            color: AppColors.white87,
                             fontSize: FontSize.s14,
                             fontWeight: FontWeight.w400),
                         dateTextStyle: GoogleFonts.lato(
-                            color: AppColors.white87,
                             fontSize: FontSize.s14,
                             fontWeight: FontWeight.w400),
                         monthTextStyle: GoogleFonts.lato(
-                            color: AppColors.white87,
                             fontSize: FontSize.s14,
                             fontWeight: FontWeight.w400),
                         onDateChange: (date) {
@@ -98,10 +98,10 @@ class HomeScreen extends StatelessWidget {
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: (context, index) {
                                   return TaskComponent(
-                                      taskModel: bloc.taskList[index]);
+                                    taskModel: bloc.taskList[index],
+                                  );
                                 },
-                                separatorBuilder: (context, index) =>
-                                    SizedBox(
+                                separatorBuilder: (context, index) => SizedBox(
                                       height: 24.h,
                                     ),
                                 itemCount: bloc.taskList.length),

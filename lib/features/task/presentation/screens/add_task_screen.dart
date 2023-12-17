@@ -18,21 +18,16 @@ import '../../../../features/task/presentation/cubit/task_states.dart';
 class AddTasksScreen extends StatelessWidget {
   const AddTasksScreen({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: AppColors.black,
         appBar: AppBar(
-          backgroundColor: AppColors.black,
-          elevation: 0.0,
-          centerTitle: false,
           title: Text(
             AppStrings.addTask,
             style: GoogleFonts.lato(
-                fontWeight: FontWeight.w700,
-                fontSize: FontSize.s30,
-                color: AppColors.white87),
+              fontWeight: FontWeight.w700,
+              fontSize: FontSize.s30,
+            ),
           ),
           leading: IconButton(
             onPressed: () {
@@ -41,9 +36,9 @@ class AddTasksScreen extends StatelessWidget {
             icon: const Icon(Icons.arrow_back_ios),
           ),
         ),
-        body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 24.h),
-          child: SingleChildScrollView(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 24.h),
             child: BlocConsumer<TaskCubit, TaskStates>(
               listener: (context, state) {
                 if (state is InsertTaskSuccessState) {
@@ -140,7 +135,7 @@ class AddTasksScreen extends StatelessWidget {
                             fontWeight: FontWeight.w400,
                             fontSize: FontSize.s16),
                       ),
-
+        
                       SizedBox(
                         height: 68.0.h,
                         width: 276.w,

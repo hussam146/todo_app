@@ -5,6 +5,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
+import 'package:todo_app/core/database/cache_helper.dart';
 import '../../../../core/database/sqflite_helper.dart';
 import '../../../../core/services/service_locator.dart';
 import '../../../../features/task/data/model/task_model.dart';
@@ -187,5 +188,21 @@ class TaskCubit extends Cubit<TaskStates> {
         .format(DateTime.now().add(const Duration(minutes: 45)));
     curDate = DateTime.now();
     curColorIndex = 0;
+  }
+
+  bool isDark = false;
+  bool? changeTheme({bool? fromShared}) {
+    try {
+      if (fromShared != null) {
+        isDark = fromShared;
+        emit(ChangeThemeState());
+      } else {
+        isDark = !isDark;
+        CacheHelper().saveData(key: 'is-dark', value: isDark).then((value) => emit(ChangeThemeState()));
+      }
+    } catch (e) {
+      log('Error While Saving Theme ${e.toString()}');
+    }
+    return null;
   }
 }
