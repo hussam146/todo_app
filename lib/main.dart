@@ -8,14 +8,14 @@ import '../../../../core/services/notifications_services.dart';
 import 'app/app.dart';
 import 'core/services/service_locator.dart';
 
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await ScreenUtil.ensureScreenSize();
-  setUp();// locate get_it instances
+  setUp(); // locate get_it instances
   await sl<CacheHelper>().init();
   sl<SqfliteHelper>().initDatabase();
   await sl<NotifyHelper>().initializeNotification(sl<NotifyHelper>().fln);
   Bloc.observer = MyBlocObserver();
-  runApp(MyApp());
+  bool? isDark = await CacheHelper().getData(key: 'is-dark') ?? false;
+  runApp(MyApp(isDark));
 }
-

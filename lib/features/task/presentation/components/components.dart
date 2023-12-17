@@ -30,7 +30,6 @@ class CustomTextButton extends StatelessWidget {
       child: Text(
         text,
         style: GoogleFonts.lato(
-            color: AppColors.white87,
             fontWeight: FontWeight.w400,
             fontSize: FontSize.s16),
       ),
@@ -69,23 +68,21 @@ class AddTaskComponents extends StatelessWidget {
           text,
           style: GoogleFonts.lato(
               fontWeight: FontWeight.w400,
-              fontSize: FontSize.s16,
-              color: AppColors.white87),
+              fontSize: FontSize.s16),
         ),
         SizedBox(
           height: 8.h,
         ),
         TextFormField(
           controller: controller,
-          style: TextStyle(color: AppColors.white),
           readOnly: readOnly,
           validator: validate,
           onChanged: onChanged,
           decoration: InputDecoration(
+            
             hintText: hintText,
             suffixIcon: Icon(
               suffixIcon,
-              color: AppColors.white,
             ),
           ),
           onTap: onTap,
@@ -293,7 +290,6 @@ class NoTasksComponent extends StatelessWidget {
           child: Text(
             AppStrings.noTaskTitle,
             style: GoogleFonts.lato(
-                color: AppColors.white87,
                 fontSize: FontSize.s20,
                 fontWeight: FontWeight.w400),
           ),
@@ -307,7 +303,6 @@ class NoTasksComponent extends StatelessWidget {
           child: Text(
             AppStrings.noTaskSubTitle,
             style: GoogleFonts.lato(
-                color: AppColors.white87,
                 fontSize: FontSize.s16,
                 fontWeight: FontWeight.w400),
           ),

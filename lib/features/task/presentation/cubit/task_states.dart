@@ -3,6 +3,7 @@
 abstract class TaskStates {}
 
 class TaskInitState extends TaskStates {}
+class ChangeThemeState extends TaskStates {}
 // update color index
 class UpdateColorIndexState extends TaskStates {}
 // date

@@ -13,15 +13,15 @@ class SqfliteHelper {
   static final SqfliteHelper _instance = SqfliteHelper._internal();
   factory SqfliteHelper() => _instance;
 
-  late Database _database;
+  static Database? _database;
 
   // if it is found open it, else create it.
   Future<Database> get database async {
     if (_database != null) {
-      return _database;
+      return _database!;
     }
     _database = await initDatabase();
-    return _database;
+    return _database!;
   }
 
   initDatabase() async {

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:todo_app/features/task/presentation/cubit/task_states.dart';
 import '../core/themes/app_theme.dart';
 import '../features/auth/presentation/cubit/on_boarding_cubit.dart';
 import '../features/auth/presentation/screens/splash_screen.dart';
 import '../features/task/presentation/cubit/task_cubit.dart';
 
 class MyApp extends StatelessWidget {
-  // singleton instance
-  const MyApp._internal();
-  static const MyApp instance = MyApp._internal();
-  factory MyApp() => instance;
+  final bool? isDark;
+
+  const MyApp(this.isDark, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +21,16 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => OnBoardingCubit()),
-            BlocProvider(create: (context) => TaskCubit()..getTasks())
+            BlocProvider(create: (context) => TaskCubit()..getTasks()..changeTheme(fromShared: isDark))
           ],
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            theme: getTheme(context),
-            home: const SplashScreen(),
+          child: BlocBuilder<TaskCubit, TaskStates>(
+            builder: (context, state) {
+              return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                theme: TaskCubit.get(context).isDark?getDarkTheme(context) : getLightTheme(context),
+                home: const SplashScreen(),
+              );
+            },
           ),
         );
       },
